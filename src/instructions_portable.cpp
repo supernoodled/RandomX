@@ -77,7 +77,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 	#endif
 
 	static void setRoundMode_(uint32_t mode) {
-		_controlfp(mode, _MCW_RC);
+		_controlfp(mode, _MCW_RC); //_CRT_SECURE_NO_WARNINGS or C4996
 	}
 	#define HAVE_SETROUNDMODE_IMPL
 #endif

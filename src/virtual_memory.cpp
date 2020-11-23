@@ -66,7 +66,7 @@ void setPrivilege(const char* pszPrivilege, BOOL bEnable) {
 	if (!OpenProcessToken(GetCurrentProcess(), TOKEN_ADJUST_PRIVILEGES | TOKEN_QUERY, &hToken))
 		throw std::runtime_error(getErrorMessage("OpenProcessToken"));
 
-	if (!LookupPrivilegeValue(NULL, pszPrivilege, &tp.Privileges[0].Luid))
+	if (!LookupPrivilegeValueA(NULL, pszPrivilege, &tp.Privileges[0].Luid)) //--LookupPrivilegeValueW
 		throw std::runtime_error(getErrorMessage("LookupPrivilegeValue"));
 
 	tp.PrivilegeCount = 1;
